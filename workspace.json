@@ -1,0 +1,68 @@
+{
+  "version": 2,
+  "projects": {
+    "notes": {
+      "root": "apps/notes",
+      "sourceRoot": "apps/notes/src",
+      "projectType": "application",
+      "prefix": "notes",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/notes",
+            "main": "apps/notes/src/main.ts",
+            "tsConfig": "apps/notes/tsconfig.app.json",
+            "assets": [
+              "apps/notes/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/notes/src/environments/environment.ts",
+                  "with": "apps/notes/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "notes:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/notes/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/notes"
+          ],
+          "options": {
+            "jestConfig": "apps/notes/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/nest"
+  },
+  "defaultProject": "notes"
+}
