@@ -15,22 +15,13 @@
           "options": {
             "outputPath": "dist/apps/notes",
             "main": "apps/notes/src/main.ts",
-            "tsConfig": "apps/notes/tsconfig.app.json",
-            "assets": [
-              "apps/notes/src/assets"
-            ]
+            "tsConfig": "apps/notes/tsconfig.app.json"
           },
           "configurations": {
             "production": {
               "optimization": true,
               "extractLicenses": true,
-              "inspect": false,
-              "fileReplacements": [
-                {
-                  "replace": "apps/notes/src/environments/environment.ts",
-                  "with": "apps/notes/src/environments/environment.prod.ts"
-                }
-              ]
+              "inspect": false
             }
           }
         },
