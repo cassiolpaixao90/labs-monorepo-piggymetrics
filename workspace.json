@@ -1,11 +1,11 @@
 {
   "version": 2,
   "projects": {
-    "notes": {
-      "root": "apps/notes",
-      "sourceRoot": "apps/notes/src",
+    "accounts-service": {
+      "root": "apps/accounts-service",
+      "sourceRoot": "apps/accounts-service/src",
       "projectType": "application",
-      "prefix": "notes",
+      "prefix": "accounts-service",
       "targets": {
         "build": {
           "executor": "@nrwl/node:build",
@@ -13,14 +13,14 @@
             "{options.outputPath}"
           ],
           "options": {
-            "outputPath": "dist/apps/notes",
-            "main": "apps/notes/src/main.ts",
-            "tsConfig": "apps/notes/tsconfig.app.json"
+            "outputPath": "dist/apps/accounts-service",
+            "main": "apps/accounts-service/src/main.ts",
+            "tsConfig": "apps/accounts-service/tsconfig.app.json"
           },
           "configurations": {
             "production": {
               "optimization": true,
-              "extractLicenses": true,
+              "extractLicenses": false,
               "inspect": false
             }
           }
@@ -28,24 +28,24 @@
         "serve": {
           "executor": "@nrwl/node:execute",
           "options": {
-            "buildTarget": "notes:build"
+            "buildTarget": "accounts-service:build"
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "apps/notes/**/*.ts"
+              "apps/accounts-service/**/*.ts"
             ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
           "outputs": [
-            "coverage/apps/notes"
+            "coverage/apps/accounts-service"
           ],
           "options": {
-            "jestConfig": "apps/notes/jest.config.js",
+            "jestConfig": "apps/accounts-service/jest.config.js",
             "passWithNoTests": true
           }
         }
@@ -55,5 +55,5 @@
   "cli": {
     "defaultCollection": "@nrwl/nest"
   },
-  "defaultProject": "notes"
+  "defaultProject": "accounts-service"
 }
